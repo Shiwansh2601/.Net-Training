@@ -1,0 +1,369 @@
+# LINQ / Collection Methods - Quick Notes
+
+Find()
+Where()
+First()
+FirstOrDefault()
+Single()
+SingleOrDefault()
+
+Any()
+All()
+Count()
+
+Select()
+OrderBy()
+OrderByDescending()
+ThenBy()
+
+ToList()
+ToArray()
+
+Max()
+Min()
+Sum()
+Average()
+
+Contains()
+Distinct()
+
+Skip()
+Take()
+
+GroupBy()
+
+## 1. `Find()`
+
+1. `Find()` **List<T> ka method** hai, LINQ extension method nahi hai.
+2. Ye list me search karta hai aur **first matching element** return karta hai.
+3. Agar multiple records condition satisfy karein, to **sirf first record** return hota hai.
+4. Agar record nahi milta, to **default value** return karta hai.
+5. Reference type ke case me default value `null` hoti hai.
+6. Isliye record na milne par normally **exception nahi aati**.
+7. `Id` / unique key se ek record search karne ke liye useful hai.
+8. Example: `employees.Find(e => e.Id == 101);`
+
+**Project me exception?**  
+❌ Record not found ke liye exception ki zarurat nahi hai.  
+`null` check karna better hai.
+
+---
+
+## 2. `Where()`
+
+1. `Where()` **LINQ extension method** hai.
+2. Ye data ko **filter** karne ke liye use hota hai.
+3. Ye condition satisfy karne wale **saare records** return karta hai.
+4. Agar duplicate records hain, to sabhi matching records return honge.
+5. Agar koi record match nahi karta, to **`null` nahi**, empty sequence return hoti hai.
+6. Iska return type generally `IEnumerable<T>` hota hai.
+7. General conditions ke liye useful hai:
+   - `Age > 25`
+   - `Salary >= 50000`
+   - `Department == "IT"`
+8. `Where()` generally **deferred execution** follow karta hai.
+9. Example: `employees.Where(e => e.Age > 25);`
+
+**Project me exception?**  
+❌ No record found ke liye exception use nahi karni chahiye.  
+Empty result normal condition hai.
+
+---
+
+## 3. `First()`
+
+1. `First()` **LINQ extension method** hai.
+2. Ye condition satisfy karne wala **first record** return karta hai.
+3. Multiple records match karein to bhi **first record only** return hota hai.
+4. Agar koi record nahi milta, to **`InvalidOperationException`** throw hoti hai.
+5. Jab hame logically pata ho ki record available hona chahiye, tab use kar sakte hain.
+6. Example: `employees.First(e => e.Id == 101);`
+
+**Project me exception?**  
+⚠️ Agar "record not found" possible hai, to `First()` avoid karke `FirstOrDefault()` use karna safer hai.
+
+**Use `First()` when:**
+
+> "Mujhe pata hai ki data exist karega. Agar nahi hai, to application flow me ye unexpected situation hai."
+
+---
+
+## 4. `FirstOrDefault()`
+
+1. `FirstOrDefault()` **LINQ extension method** hai.
+2. Ye condition satisfy karne wala **first record** return karta hai.
+3. Multiple records match karein to **first record** return hota hai.
+4. Agar record nahi milta, to **default value** return hoti hai.
+5. Reference type ke liye generally `null` return hota hai.
+6. Record not found ke liye exception automatically nahi aati.
+7. Jab record **mil bhi sakta hai aur nahi bhi mil sakta**, tab ye useful hai.
+8. Example: `employees.FirstOrDefault(e => e.Id == 101);`
+
+**Project me exception?**  
+❌ Record not found ke liye exception nahi.  
+`null` check karo.
+
+```csharp
+var emp = employees.FirstOrDefault(e => e.Id == 101);
+
+if (emp == null)
+{
+    Console.WriteLine("Employee not found");
+}
+```
+
+---
+
+## 5. `Single()`
+
+1. `Single()` **LINQ extension method** hai.
+2. Ye expect karta hai ki **exactly one record** match karega.
+3. Agar exactly one record milta hai, wahi return hota hai.
+4. Agar **0 records** milte hain, to `InvalidOperationException` aati hai.
+5. Agar **1 se zyada records** milte hain, tab bhi `InvalidOperationException` aati hai.
+6. Iska use tab karo jab data ka **unique hona guaranteed** ho.
+7. Primary key / unique constraint type situations me useful ho sakta hai.
+8. Example: `employees.Single(e => e.Id == 101);`
+
+**Project me exception?**  
+⚠️ `Single()` khud exception throw karta hai.
+
+Agar duplicate data **data integrity problem** hai, to exception appropriate ho sakti hai.
+
+Example:
+
+> "Employee ID unique honi chahiye, lekin database me same ID ke 2 records mil gaye."
+
+Ye normal "not found" situation nahi hai. Ye **unexpected data problem** hai.
+
+---
+
+## 6. `SingleOrDefault()`
+
+1. `SingleOrDefault()` **LINQ extension method** hai.
+2. Ye **0 ya 1 record** expect karta hai.
+3. Exactly one record mile → wahi return karega.
+4. 0 record mile → **default/null** return karega.
+5. Agar multiple records mile → **`InvalidOperationException`**.
+6. Jab record optional ho, lekin agar mile to **unique hona compulsory** ho, tab useful hai.
+7. Example: `employees.SingleOrDefault(e => e.Id == 101);`
+
+**Project me exception?**
+
+- Record nahi mila → ❌ Exception nahi.
+- Multiple records mile → ⚠️ Exception, because data expected to be unique.
+
+
+7. Any()
+1. Any() check karta hai ki collection me koi element available hai ya nahi.
+2. Ye true ya false return karta hai.
+3. Condition ke saath bhi use kar sakte hain.
+4. Agar ek bhi element condition satisfy karta hai, to true return hota hai.
+5. Sirf existence check karna ho to Count() se better Any() use karna generally preferred hai.
+6. Example:employees.Any(e => e.Age > 25);
+Project me exception?
+❌ Normally exception nahi.
+Any() → "Koi record hai?" → true/false
+
+8. All()
+1. All() check karta hai ki saare elements given condition satisfy karte hain ya nahi.
+2. Ye true ya false return karta hai.
+3. Agar ek bhi element condition fail kare, to false.
+4. Agar sabhi elements condition satisfy karein, to true.
+5. Example:employees.All(e => e.Age >= 18);
+Project me exception?
+❌ Normally exception nahi.
+All() → "Kya sabhi records condition satisfy karte hain?"
+
+9. Count()
+1. Count() collection me total number of elements count karta hai.
+2. Condition ke saath bhi use kar sakte hain.
+3. Example:int total = employees.Count();
+4. Condition ke saath:int total = employees.Count(e => e.Age > 25);
+5. Count() number return karta hai.
+6. No matching record ho to 0 return hota hai.
+Project me exception?
+❌ No record ke liye exception nahi.
+Count() → "Kitne records hain?"
+
+10. ToList()
+1. ToList() kisi IEnumerable<T> ko List<T> me convert karta hai.
+2. Ye commonly Where() ke baad use hota hai.
+3. Where() normally IEnumerable<T> return karta hai.
+4. Agar hame actual List<T> chahiye, to ToList() use karte hain.
+5. ToList() query ko immediately execute/materialize karta hai.
+6. Example:List<Employee> result =
+       employees.Where(e => e.Age > 25).ToList();
+Project me exception?
+❌ Normally no.
+ToList() → IEnumerable ko List me convert karo.
+
+11. ToArray()
+1. ToArray() collection/query ko array me convert karta hai.
+2. Example:Employee[] result = employees.ToArray();
+3. Ye bhi query ko materialize karta hai.
+4. Jab specifically array required ho tab use karo.
+Project me exception?
+❌ Normally no.
+ToArray() → Collection → Array
+
+12. Select()
+1. Select() data ko transform/project karne ke liye use hota hai.
+2. Where() filtering karta hai, while Select() data ka required part select karta hai.
+3. Example:var names = employees.Select(e => e.Name);
+4. Isme sirf employee ka Name milega.
+5. New object bhi create kar sakte hain.
+6. Example:var result = employees.Select(e => new
+   {
+       e.Name,
+       e.Salary
+   });
+Project me exception?
+❌ Normally no.
+Where() → kaunse records?
+Select() → un records me se kya data?
+
+13. OrderBy()
+1. OrderBy() data ko ascending order me sort karta hai.
+2. Example:var result = employees.OrderBy(e => e.Salary);
+3. Salary lowest → highest.
+4. Name ke according alphabetical order bhi kar sakte hain.
+Project me exception?
+❌ Normally no.
+OrderBy() → Ascending sorting
+
+14. OrderByDescending()
+1. OrderByDescending() data ko descending order me sort karta hai.
+2. Example:var result = employees.OrderByDescending(e => e.Salary);
+3. Salary highest → lowest.
+Project me exception?
+❌ Normally no.
+OrderByDescending() → Descending sorting
+
+15. ThenBy()
+1. ThenBy() ka use secondary sorting ke liye hota hai.
+2. Pehle OrderBy() se primary sorting hoti hai.
+3. Uske baad same values ke case me ThenBy() apply hota hai.
+4. Example:var result = employees
+       .OrderBy(e => e.Department)
+       .ThenBy(e => e.Name);
+5. Pehle Department ke according sort hoga.
+6. Same Department ke employees Name ke according sort honge.
+Project me exception?
+❌ Normally no.
+OrderBy() → Primary sorting
+ThenBy() → Secondary sorting
+
+16. Max()
+1. Max() collection me maximum value find karta hai.
+2. Example:double maxSalary = employees.Max(e => e.Salary);
+3. Highest salary milegi.
+4. Numbers, dates etc. ke saath use ho sakta hai.
+Project me exception?
+⚠️ Empty sequence ke case me exception aa sakti hai.
+Max() → Maximum value
+
+17. Min()
+1. Min() collection me minimum value find karta hai.
+2. Example:double minSalary = employees.Min(e => e.Salary);
+3. Lowest salary milegi.
+Project me exception?
+⚠️ Empty sequence ke case me exception aa sakti hai.
+Min() → Minimum value
+
+18. Sum()
+1. Sum() values ka total calculate karta hai.
+2. Example:double totalSalary = employees.Sum(e => e.Salary);
+3. Mainly numeric values ke saath use hota hai.
+4. Empty numeric sequence ke case me generally 0 result milta hai.
+Project me exception?
+❌ Normal empty collection ke liye generally exception nahi.
+Sum() → Total
+
+19. Average()
+1. Average() values ka average calculate karta hai.
+2. Example:double avgSalary = employees.Average(e => e.Salary);
+3. Numeric data ke saath use hota hai.
+4. Empty sequence ke case me exception aa sakti hai.
+Project me exception?
+⚠️ Empty collection possible ho to handle karo.
+Average() → Average value
+
+20. Contains()
+1. Contains() check karta hai ki given value collection me present hai ya nahi.
+2. true ya false return karta hai.
+3. Example:bool exists = names.Contains("Rahul");
+4. Simple existence checking ke liye useful hai.
+Project me exception?
+❌ Normally no.
+Contains() → "Ye value present hai?"
+
+21. Distinct()
+1. Distinct() duplicate values ko remove karta hai.
+2. Sirf unique values return karta hai.
+3. Example:var departments = employees
+       .Select(e => e.Department)
+       .Distinct();
+4. Agar IT, HR, IT, Sales, HR hai:IT
+   HR
+   Sales
+Project me exception?
+❌ Normally no.
+Distinct() → Duplicate remove → Unique values
+
+22. Skip()
+1. Skip() starting ke specified number of records skip karta hai.
+2. Example:var result = employees.Skip(5);
+3. First 5 records skip honge.
+4. Mostly pagination me useful hai.
+Project me exception?
+❌ Normally no.
+Skip(5) → First 5 records chhod do.
+
+23. Take()
+1. Take() starting se specified number of records leta hai.
+2. Example:var result = employees.Take(5);
+3. First 5 records milenge.
+4. Pagination aur limited results ke liye useful hai.
+Project me exception?
+❌ Normally no.
+Take(5) → First 5 records do.
+
+24. Skip() + Take() = Pagination
+Ye real project me bahut important hai.
+var result = employees
+    .Skip(10)
+    .Take(10)
+    .ToList();
+
+Meaning:
+First 10 records → Skip
+Next 10 records → Take
+
+Typical formula:
+Skip = (PageNumber - 1) × PageSize
+
+Example:
+Page 1 → Skip 0  → Take 10
+Page 2 → Skip 10 → Take 10
+Page 3 → Skip 20 → Take 10
+
+25. GroupBy()
+1. GroupBy() same type/category ke records ko groups me divide karta hai.
+2. Example:var result = employees.GroupBy(e => e.Department);
+3. Employees department-wise group ho jayenge.
+4. Reporting aur data analysis me useful hai.
+5. Count(), Sum(), Average() ke saath commonly use hota hai.
+Example:
+var result = employees
+    .GroupBy(e => e.Department)
+    .Select(g => new
+    {
+        Department = g.Key,
+        Count = g.Count()
+    });
+
+Project me exception?
+❌ Normally no.
+GroupBy() → Similar records ko group karo.
+

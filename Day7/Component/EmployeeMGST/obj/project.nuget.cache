@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "dgSpecHash": "elI6LhL8bBs=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\shiwa\\Desktop\\HCL Training\\C# language\\Day7\\Component\\EmployeeMGST\\EmployeeMGST.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\shiwa\\.nuget\\packages\\system.text.json\\10.0.12\\system.text.json.10.0.12.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1510",
+      "level": "Warning",
+      "message": "PackageReference System.Text.Json will not be pruned. This package is automatically available and does not need to be referenced explicitly. Remove the PackageReference item.",
+      "projectPath": "C:\\Users\\shiwa\\Desktop\\HCL Training\\C# language\\Day7\\Component\\EmployeeMGST\\EmployeeMGST.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\shiwa\\Desktop\\HCL Training\\C# language\\Day7\\Component\\EmployeeMGST\\EmployeeMGST.csproj",
+      "libraryId": "System.Text.Json",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
+}

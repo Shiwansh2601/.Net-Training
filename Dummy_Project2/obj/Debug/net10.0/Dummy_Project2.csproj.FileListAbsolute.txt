@@ -1,0 +1,14 @@
+C:\Users\shiwa\Desktop\HCL Training\C# language\Dummy_Project2\bin\Debug\net10.0\Dummy_Project2.exe
+C:\Users\shiwa\Desktop\HCL Training\C# language\Dummy_Project2\bin\Debug\net10.0\Dummy_Project2.deps.json
+C:\Users\shiwa\Desktop\HCL Training\C# language\Dummy_Project2\bin\Debug\net10.0\Dummy_Project2.runtimeconfig.json
+C:\Users\shiwa\Desktop\HCL Training\C# language\Dummy_Project2\bin\Debug\net10.0\Dummy_Project2.dll
+C:\Users\shiwa\Desktop\HCL Training\C# language\Dummy_Project2\bin\Debug\net10.0\Dummy_Project2.pdb
+C:\Users\shiwa\Desktop\HCL Training\C# language\Dummy_Project2\obj\Debug\net10.0\Dummy_Project2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\shiwa\Desktop\HCL Training\C# language\Dummy_Project2\obj\Debug\net10.0\Dummy_Project2.AssemblyInfoInputs.cache
+C:\Users\shiwa\Desktop\HCL Training\C# language\Dummy_Project2\obj\Debug\net10.0\Dummy_Project2.AssemblyInfo.cs
+C:\Users\shiwa\Desktop\HCL Training\C# language\Dummy_Project2\obj\Debug\net10.0\Dummy_Project2.csproj.CoreCompileInputs.cache
+C:\Users\shiwa\Desktop\HCL Training\C# language\Dummy_Project2\obj\Debug\net10.0\Dummy_Project2.dll
+C:\Users\shiwa\Desktop\HCL Training\C# language\Dummy_Project2\obj\Debug\net10.0\refint\Dummy_Project2.dll
+C:\Users\shiwa\Desktop\HCL Training\C# language\Dummy_Project2\obj\Debug\net10.0\Dummy_Project2.pdb
+C:\Users\shiwa\Desktop\HCL Training\C# language\Dummy_Project2\obj\Debug\net10.0\Dummy_Project2.genruntimeconfig.cache
+C:\Users\shiwa\Desktop\HCL Training\C# language\Dummy_Project2\obj\Debug\net10.0\ref\Dummy_Project2.dll

@@ -1,0 +1,11 @@
+C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Component\EmployeeMGST\bin\Debug\net10.0\EmployeeMGST.deps.json
+C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Component\EmployeeMGST\bin\Debug\net10.0\EmployeeMGST.dll
+C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Component\EmployeeMGST\bin\Debug\net10.0\EmployeeMGST.pdb
+C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Component\EmployeeMGST\obj\Debug\net10.0\EmployeeMGST.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Component\EmployeeMGST\obj\Debug\net10.0\EmployeeMGST.AssemblyInfoInputs.cache
+C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Component\EmployeeMGST\obj\Debug\net10.0\EmployeeMGST.AssemblyInfo.cs
+C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Component\EmployeeMGST\obj\Debug\net10.0\EmployeeMGST.csproj.CoreCompileInputs.cache
+C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Component\EmployeeMGST\obj\Debug\net10.0\EmployeeMGST.dll
+C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Component\EmployeeMGST\obj\Debug\net10.0\refint\EmployeeMGST.dll
+C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Component\EmployeeMGST\obj\Debug\net10.0\EmployeeMGST.pdb
+C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Component\EmployeeMGST\obj\Debug\net10.0\ref\EmployeeMGST.dll
