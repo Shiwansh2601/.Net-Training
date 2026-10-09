@@ -1,4 +1,4 @@
-// Limitations of Synchronous Programming(10,13,15) run on single main thread . Sabse bada kutta 13 line no pe hai jo 10 second le rha hai.
+/* // Limitations of Synchronous Programming(10,13,15) run on single main thread . Sabse bada kutta 13 line no pe hai jo 10 second le rha hai.
 
 using System.Threading;
 
@@ -30,4 +30,4 @@ class Product
 // Convert this to TPL then convert the EmployeeMGST system program to TPL +DTO
 
 // Event Using Delegates.
-// Access Modifiers.
+// Access Modifiers. */

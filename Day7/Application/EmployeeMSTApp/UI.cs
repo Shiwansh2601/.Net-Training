@@ -8,7 +8,7 @@ namespace EmployeeMSTApp
   
 class Test
 {
-    public static void Main()
+    public static async Task Main()
     {
         IEmployeeOperation employeeOperation = new EmployeeOperation();
 
@@ -83,7 +83,7 @@ class Test
 
 
 
-
+/* 
 
 
         Employee updatedEmployee = new Employee
@@ -142,15 +142,34 @@ class Test
             {
                 Console.WriteLine(e.Id + " " +e.Name+" "+e.Age);
             }
-        }
+        } 
 
-        Console.WriteLine("Sorted List : ");
-        List<Employee> sortedList=employeeOperation.GetEmployeesInSortedOrder();
 
-        foreach(var el in sortedList)
+        */
+
+        Console.WriteLine("List : ");
+        List<Employee> List=await employeeOperation.GetEmployees();
+
+        foreach(var el in List)
         {
             Console.WriteLine(el.Id+" "+el.Name+" "+el.Age);
         }
+        
+
+          Employee updatedEmployee = new Employee
+        {
+            Name = "Shiwansh",
+            Age = 21
+        };
+
+        Employee result =
+            await employeeOperation.UpdateEmployee(updatedEmployee, 101);
+
+        Console.Write("Employee updated successfully. Updated Record : ");
+
+        Console.WriteLine(
+            $"{result.Id} {result.Name} {result.Age}"
+        );
 
 
     }

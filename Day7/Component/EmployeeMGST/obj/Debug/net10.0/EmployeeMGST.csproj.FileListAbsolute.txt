@@ -9,3 +9,4 @@ C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Component\EmployeeMGST\obj\
 C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Component\EmployeeMGST\obj\Debug\net10.0\refint\EmployeeMGST.dll
 C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Component\EmployeeMGST\obj\Debug\net10.0\EmployeeMGST.pdb
 C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Component\EmployeeMGST\obj\Debug\net10.0\ref\EmployeeMGST.dll
+C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Component\EmployeeMGST\obj\Debug\net10.0\EmployeeMGST.sourcelink.json

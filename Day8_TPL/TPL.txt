@@ -1,0 +1,20 @@
+Tips: 
+
+1. Interface: 
+Task<List<Employee>>  GetEmployee();  //Declaration in Interface
+
+async Task<List<Employee>> GetEmployee(){   // Method definations
+   await Task.Delay(2000);
+
+
+}
+
+
+List<Employee> list=await Operation.GetEmployee();   // Method Calling
+
+foreach(Employee emp in list)
+{
+   Console.WriteLine(emp);
+}
+
+

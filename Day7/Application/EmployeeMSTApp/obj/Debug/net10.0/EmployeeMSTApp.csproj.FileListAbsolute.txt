@@ -16,3 +16,4 @@ C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Application\EmployeeMSTApp\
 C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Application\EmployeeMSTApp\obj\Debug\net10.0\EmployeeMSTApp.pdb
 C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Application\EmployeeMSTApp\obj\Debug\net10.0\EmployeeMSTApp.genruntimeconfig.cache
 C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Application\EmployeeMSTApp\obj\Debug\net10.0\ref\EmployeeMSTApp.dll
+C:\Users\shiwa\Desktop\HCL Training\C# language\Day7\Application\EmployeeMSTApp\obj\Debug\net10.0\EmployeeMSTApp.sourcelink.json

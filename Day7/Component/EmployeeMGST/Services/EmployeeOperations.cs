@@ -19,7 +19,7 @@ namespace EmployeeMGST.Services
 
     public List<Employee> GetEmployeesInSortedOrder()
     {
-         List<Employee>emp=employees.Where(e =>e.Age>18).OrderBy(e=>e.Age).ToList(); // OrderBy use.
+         List<Employee>emp=employees.OrderBy(e=>e.Age).ToList(); // OrderBy use.
 
          return emp;
     }
@@ -30,8 +30,10 @@ namespace EmployeeMGST.Services
             return employee;
         }
 
-        Employee IEmployeeOperation.DeleteEmployee(int id)
+         Employee IEmployeeOperation.DeleteEmployee(int id)
         {
+             
+
             var emp = employees.Find(e => e.Id == id);
             if (emp != null)
             {
@@ -57,13 +59,17 @@ namespace EmployeeMGST.Services
             
         }
 
-        List<Employee> IEmployeeOperation.GetEmployees()
+       async Task< List<Employee>> IEmployeeOperation.GetEmployees()
         {
+
+            await Task.Delay(2000);
             return employees;
         }
 
-        Employee IEmployeeOperation.UpdateEmployee(Employee employee, int id)
+        async Task<Employee>IEmployeeOperation.UpdateEmployee(Employee employee, int id)
         {
+
+           await Task.Delay(2000);
             var exist = employees.Find(e => e.Id == id);
             if (exist != null)
             {
